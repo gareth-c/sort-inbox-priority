@@ -1,6 +1,22 @@
 # Changelog
 
-## 2026-10-31
+## 2026-10-31 (1.1.0)
+
+Summary: Runs now end at zero unread, apart from the High and Medium to-do list.
+
+### Added
+- Fourth label, Action/Reviewed, for threads that were checked and need no action, so re-runs only see new mail.
+- Clear step that marks Reviewed and Low threads as read (and, in full inbox mode, can archive them), after asking once with counts.
+- Settings for the Reviewed label name, how clearing works (ask, read, archive or off) and whether Low threads are cleared.
+- Final check that only High and Medium threads are left unread, with the reason given if not.
+- Dry-run mode that reports what would change without changing anything.
+
+### Changed
+- Promotions, Social and noise-sender mail is now covered too, so every thread in the inbox gets a label.
+- The report accounts for every thread: unread at start, each label, how many were marked read and how many are still unread.
+- Label and mark-read calls run in parallel batches, and partial progress is reported honestly if a run stops early.
+
+## 2026-10-31 (1.0.0)
 
 Summary: First release (1.0.0) of the Gmail triage skill and plugin.
 

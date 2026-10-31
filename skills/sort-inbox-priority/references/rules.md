@@ -33,7 +33,9 @@ file, so upgrades don't overwrite them.
 - Personal FYIs from people that need no reply.
 - Product or policy changes with a future effective date.
 
-## No label (doesn't need reading)
+## Reviewed: no action needed
+
+These get `Action/Reviewed` and are marked read once the user agrees.
 
 - Newsletters, digests and news alerts.
 - Saved-search, price-drop and deal alerts.
@@ -43,14 +45,14 @@ file, so upgrades don't overwrite them.
 - Automated reports, unless they show an error or outage.
 - Reminders for things whose date has already passed.
 
-## Default noise-sender exclusion
+## Default noise senders
 
-Add this to the search query. These senders almost never need action. If one of them
-sends something with security, outage or payment-failure language in the subject, check
-it anyway.
+These senders almost never need action, so their threads are tagged `Action/Reviewed`
+straight from the search results, without being read. If one of them sends something with
+security, outage or payment-failure language in the subject, classify it anyway.
 
 ```
--from:(substack.com OR beehiiv.com OR googlealerts-noreply@google.com)
+substack.com OR beehiiv.com OR googlealerts-noreply@google.com
 ```
 
 Add your own noise senders in your overrides file. The skill joins both lists.
