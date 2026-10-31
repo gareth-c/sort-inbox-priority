@@ -19,7 +19,7 @@ at gets exactly one of four labels:
 are the to-do list. Nothing else stays unread, so "reviewed, no action" is never confused
 with "never looked at".
 
-**Version:** 1.1.0
+**Version:** 1.2.0
 
 ## Requirements
 

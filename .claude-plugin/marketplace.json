@@ -10,7 +10,7 @@
       "name": "sort-inbox-priority",
       "source": "./",
       "description": "Triage your Gmail inbox into Action/High, Medium and Low Priority labels.",
-      "version": "1.1.0",
+      "version": "1.2.0",
       "category": "productivity",
       "displayName": "Sort Inbox Priority"
     }
