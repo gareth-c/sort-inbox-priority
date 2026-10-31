@@ -4,16 +4,15 @@
     "name": "Gareth Campling",
     "url": "https://github.com/gareth-c"
   },
-  "metadata": {
-    "description": "Gmail triage skill for Claude: tag what needs action, ignore the rest."
-  },
+  "description": "Gmail triage skill for Claude: tag what needs action, ignore the rest.",
   "plugins": [
     {
       "name": "sort-inbox-priority",
       "source": "./",
       "description": "Triage your Gmail inbox into Action/High, Medium and Low Priority labels.",
       "version": "1.0.0",
-      "category": "productivity"
+      "category": "productivity",
+      "displayName": "Sort Inbox Priority"
     }
   ]
 }
