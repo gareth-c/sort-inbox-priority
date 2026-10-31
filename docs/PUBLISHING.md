@@ -8,10 +8,13 @@ plugin (`"source": "./"`). Nothing else is needed.
 
 Before each release:
 
-1. Bump `version` in `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`.
-2. Add a dated entry to `CHANGELOG.md`.
-3. Run `claude plugin validate .` and fix anything it reports.
-4. Merge to `main`. Installed copies pick up the change on their next update check.
+1. Bump the version in `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`
+   and the `**Version:**` line in `skills/sort-inbox-priority/SKILL.md` (the skill tells
+   users its version when it starts).
+2. Run `./scripts/check-version.sh` to confirm all three match.
+3. Add a dated entry to `CHANGELOG.md`.
+4. Run `claude plugin validate .` and fix anything it reports.
+5. Merge to `main`. Installed copies pick up the change on their next update check.
 
 Never rename the plugin: `name` is its permanent identity.
 

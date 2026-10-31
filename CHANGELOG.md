@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-10-31 (1.2.0)
+
+Summary: The skill now says which version is running and what it's about to do before it starts.
+
+### Added
+- Version number shown in the skill, with a check script that makes sure it matches the plugin manifests and runs during the zip build.
+
 ## 2026-10-31 (1.1.0)
 
 Summary: Runs now end at zero unread, apart from the High and Medium to-do list.

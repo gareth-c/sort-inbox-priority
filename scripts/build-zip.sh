@@ -9,6 +9,7 @@ out="$root/dist/sort-inbox-priority.zip"
 work=$(mktemp -d)
 trap 'rm -rf "$work"' EXIT
 
+"$root/scripts/check-version.sh"
 cp -R "$root/skills/sort-inbox-priority" "$work/"
 if [ $# -gt 0 ]; then
   cp "$1" "$work/sort-inbox-priority/references/overrides.md"
