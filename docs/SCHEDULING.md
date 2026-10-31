@@ -5,12 +5,10 @@
 Ask Claude:
 
 > Create a scheduled task that runs every weekday at 7:40am: "Run the sort-inbox-priority
-> skill on my unread Gmail and send me the High and Medium summary."
+> skill on my unread Gmail and send me the P1 and P2 summary."
 
-Scheduled runs happen with nobody watching, so the skill never asks questions. By default
-it only labels, and tells you how many threads are waiting to be marked read. To clear them
-automatically too, set `clear_mode: read` (or `archive`) in your overrides. It never
-touches High or Medium, and never deletes.
+Scheduled runs happen with nobody watching, so the skill never asks questions. It only
+adds labels: nothing is marked read, archived or deleted.
 
 ## Claude Code (cron, headless)
 
@@ -24,9 +22,8 @@ With the plugin installed and a Gmail MCP server configured:
 Make sure the Gmail MCP tools are allowed in your Claude Code permission settings,
 otherwise a headless run stops at the first permission prompt.
 
-## Weekly inbox zero
+## Whole inbox
 
-Do this by hand, not on a schedule, so you can approve the archive step (unless you've
-set `clear_mode: archive`):
+To sort mail you've already read too, run it by hand on the full inbox:
 
-> Run sort-inbox-priority on the full inbox, I want inbox zero.
+> Sort my whole inbox by priority.

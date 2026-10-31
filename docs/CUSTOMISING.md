@@ -1,7 +1,7 @@
 # Customising
 
-The goal of the skill is zero unread: after a run, only High and Medium threads are unread.
-Everything below changes how it gets there.
+The skill gives every thread one label from Priority/P1 to Priority/P5 and never changes
+read status. Everything below changes how it decides.
 
 ## Your personal overrides file
 
@@ -32,16 +32,14 @@ Upload the zip that the script writes to `dist/`. Keep your overrides file outsi
 
 ## What you can set
 
-- **Label names:** map to labels you already use, including `reviewed_label` for the
-  no-action label (default `Action/Reviewed`).
-- **Clearing:** `clear_mode` is `ask` (default; asks once with counts), `read`, `archive`
-  or `off`. `mark_low_read: false` keeps Low threads unread alongside High and Medium.
-  Scheduled runs only clear with `read` or `archive`.
-- **VIP senders:** people or domains that are always at least Medium, and High when they
-  ask you something.
-- **Extra noise senders:** tagged Reviewed straight away, without being read.
-- **Services you run:** vulnerability or outage notices from these count as High.
-- **Custom rules:** in plain English, for example "Anything from my accountant is High in
+- **Label names:** map P1 to P5 to labels you already use.
+- **VIP senders:** people or domains that are always at least P2, and P1 when they ask
+  you something.
+- **Extra priority signals:** subject words that mean "read this first", added to the
+  default list in `rules.md`.
+- **Extra noise senders:** always P5, without being read.
+- **Services you run:** failure, outage or vulnerability notices from these are P1.
+- **Custom rules:** in plain English, for example "Anything from my accountant is P1 in
   January."
 
 ## Changing the defaults
@@ -52,6 +50,5 @@ everyone.
 
 ## Label colours
 
-New labels are created red, orange, blue and grey (Reviewed, shown in the label list only
-when it has unread mail). To change colours, edit step 3 of `SKILL.md`,
-or just recolour the labels in Gmail. The skill matches labels by name, not colour.
+New labels are created red (P1), orange (P2), yellow (P3), blue (P4) and grey (P5). To change colours, edit step 3 of `SKILL.md`,
+or recolour the labels in Gmail. The skill matches labels by name, not colour.

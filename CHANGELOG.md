@@ -13,6 +13,7 @@ Summary: Mail is now sorted into five priority labels, P1 to P5, the mail that n
 ### Changed
 - The report gives a count for each of the five labels, lists P1, P2 and P3, and summarises P4 and P5 in a line each.
 - VIP senders are at least P2, and P1 when they ask something; a real person is never P4 or P5.
+- README, install, customising, scheduling and contributing guides describe the five labels and say that read status is never changed.
 
 ### Removed
 - The clear step and its settings: the skill no longer marks mail read or archives it. Everything stays unread for you to work through.

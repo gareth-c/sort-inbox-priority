@@ -9,8 +9,8 @@ Pick the route that matches how you use Claude.
 | [Claude Code plugin](#claude-code-plugin) | Claude Code users | `~/.claude/sort-inbox-priority/overrides.md` |
 | [Custom skill zip](#custom-skill-zip-claude-app) | Claude app users who want their own overrides | Built into the zip |
 
-Whichever route you use, Claude needs a Gmail connection that can **search, read, label and
-unlabel threads, and create labels**.
+Whichever route you use, Claude needs a Gmail connection that can **search, read and label
+threads, and create labels**.
 
 ## Claude app plugin
 
@@ -37,8 +37,8 @@ desktop and Claude Code.
 ```
 
 Restart Claude Code or reload plugins, then run `/sort-inbox-priority` or ask "sort my
-inbox". You also need a Gmail MCP server that offers search, read, label, unlabel and
-create-label tools.
+inbox". You also need a Gmail MCP server that offers search, read, label and create-label
+tools.
 
 **Updates:** `/plugin marketplace update sort-inbox-priority`.
 

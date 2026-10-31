@@ -1,42 +1,45 @@
 # sort-inbox-priority
 
-A Claude skill that triages your Gmail inbox to **zero unread**. It reads your mail, works
-out what actually needs you, and gives every thread one of four labels:
+A Claude skill that sorts your Gmail inbox by priority. It pulls out the mail that looks
+like it needs you, reads it, and gives every thread one of five labels:
 
-| Label | Meaning | After the run |
+| Label | Meaning | Examples |
 |---|---|---|
-| **Action/High Priority** | Act today. Ignoring it has a real cost. | Stays unread |
-| **Action/Medium Priority** | Deal with it this week. | Stays unread |
-| **Action/Low Priority** | Glance and file. | Marked read |
-| **Action/Reviewed** | Checked, doesn't need reading: newsletters, alerts, marketing. | Marked read |
+| **Priority/P1** | Act today | Check-in open, payment failed, a person waiting on your reply |
+| **Priority/P2** | This week | Renewal in 5 days, appointment to confirm, a form to send back |
+| **Priority/P3** | Worth reading, no deadline | Personal news, club updates, terms changes |
+| **Priority/P4** | Records | Paid receipts, statements, confirmations |
+| **Priority/P5** | Noise | Newsletters, alerts, marketing |
 
-When it's done, your unread mail is your to-do list: only High and Medium threads. Nothing
-is left unread just because nobody looked at it.
+Then you work through each label in your own time, starting with P1.
 
-It **never** deletes or replies. It marks mail read or archives it only after you say yes,
-or if you've turned that on in your settings.
+It **never** marks mail read, archives, deletes or replies. The only changes it makes are
+creating its five labels and adding one to each thread.
 
 ## Features
 
-- **Unread mode (default):** triages only unread inbox mail, so it suits a daily routine.
-- **Inbox zero mode:** say "all" or "inbox zero" to triage the whole inbox. It can also
-  archive the Reviewed and Low threads (only with your yes).
+- **Reads what matters:** mail with priority words in the subject (payment, renewal,
+  appointment, check-in, sign-in and so on), your VIP senders, the Primary tab, mail Gmail
+  marks important and anything from a real person is opened and read before it gets a
+  level, so dates and content decide, not just the subject.
+- **Bottom check:** before reporting, it looks back over P4 and P5 and moves up anything
+  that needs action.
+- **Unread mode (default):** sorts only unread inbox mail, so it suits a daily routine.
+  Say "all" or "full inbox" to sort everything in the inbox.
 - **Covers everything:** the main inbox, Promotions, Social and known noise senders.
-- **Clear step:** after tagging, it asks once ("Mark 612 threads as read?") and then
-  clears Reviewed and Low, so only High and Medium stay unread. A final check confirms it.
 - **Dry run:** say "dry run" to see what it would do without changing anything.
-- **Creates the labels for you** if any of the four are missing, colour-coded red, orange,
-  blue and grey.
-- **Safe to re-run or resume:** threads that already have an Action label are skipped, so a
-  run that stops early carries on where it left off.
-- **Customisable:** add VIP senders, noise senders and your own rules in a personal
-  overrides file that lives outside the repo.
+- **Creates the labels for you** if any are missing, coloured red, orange, yellow, blue
+  and grey.
+- **Safe to re-run or resume:** threads that already have a priority label are skipped,
+  so a run that stops early carries on where it left off.
+- **Customisable:** add VIP senders, priority words, noise senders and your own rules in a
+  personal overrides file that lives outside the repo.
 
 ## Requirements
 
 - Claude (claude.ai, the desktop app or Claude Code).
-- A Gmail integration Claude can use to **search, read, label and unlabel threads, and
-  create labels**. In Claude this is the Gmail connector. In Claude Code, use a Gmail MCP server
+- A Gmail integration Claude can use to **search, read and label threads, and create
+  labels**. In Claude this is the Gmail connector. In Claude Code, use a Gmail MCP server
   that offers those operations.
 
 ## Install
@@ -61,16 +64,16 @@ Ask Claude in plain language:
 
 - "Sort my inbox"
 - "Triage my unread email"
-- "Run sort-inbox-priority on the full inbox, I want inbox zero"
+- "Sort my whole inbox by priority"
 - "Dry run sort-inbox-priority"
 - `/sort-inbox-priority` (Claude Code)
 
 You get a short report that accounts for every thread, for example:
 
-> Inbox unread at start: 700. Labelled: High 0 / Medium 2 / Low 26. Reviewed: 640 (306
-> Promotions, 62 noise senders). Marked read: 666. Unread now: 2 (both Medium).
+> Inbox unread: 656. Sorted: P1 4 / P2 11 / P3 38 / P4 142 / P5 461. All still unread.
 
-Then your High and Medium items, each with one line on what to do.
+Then your P1, P2 and P3 items, each with one line on what to do, and a line each
+summarising P4 and P5.
 
 ## Run it every morning
 
@@ -87,15 +90,17 @@ See [docs/CUSTOMISING.md](docs/CUSTOMISING.md). In short: copy
 
 The full default rules are in
 [skills/sort-inbox-priority/references/rules.md](skills/sort-inbox-priority/references/rules.md).
-In summary:
+Each thread gets the highest level it qualifies for:
 
-- **High:** security alerts, service failures (payment failed, account suspended), money with a
-  near deadline, real people asking you something, travel in the next 72 hours.
-- **Medium:** bills to check, school or club admin, deadlines further out, admin that
-  needs you to act.
-- **Low:** receipts, paid statements, renewals with no change, FYIs.
-- **Reviewed:** newsletters, alerts, marketing, delivery updates, review requests and
-  reminders for things already past.
+- **P1:** would waiting until tomorrow cost money or access, or leave someone waiting?
+  Security alerts, failed payments, travel in the next 72 hours, money due within 3 days,
+  a person asking you something.
+- **P2:** does it need you to act within about 14 days? Renewals, bills to review,
+  appointments, forms, booking requests.
+- **P3:** would you want to read it, even though nothing is due? Personal news, club
+  updates, later deadlines.
+- **P4:** would you only ever look it up later? Receipts, statements, confirmations.
+- **P5:** could you delete it unread? Newsletters, alerts, marketing.
 
 ## Privacy
 
