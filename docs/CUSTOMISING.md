@@ -1,5 +1,8 @@
 # Customising
 
+The goal of the skill is zero unread: after a run, only High and Medium threads are unread.
+Everything below changes how it gets there.
+
 ## Your personal overrides file
 
 Your overrides hold personal details (VIP senders, services you run), so they live
@@ -29,10 +32,14 @@ Upload the zip that the script writes to `dist/`. Keep your overrides file outsi
 
 ## What you can set
 
-- **Label names:** map to labels you already use.
+- **Label names:** map to labels you already use, including `reviewed_label` for the
+  no-action label (default `Action/Reviewed`).
+- **Clearing:** `clear_mode` is `ask` (default; asks once with counts), `read`, `archive`
+  or `off`. `mark_low_read: false` keeps Low threads unread alongside High and Medium.
+  Scheduled runs only clear with `read` or `archive`.
 - **VIP senders:** people or domains that are always at least Medium, and High when they
   ask you something.
-- **Extra noise senders:** never labelled, and excluded from searches.
+- **Extra noise senders:** tagged Reviewed straight away, without being read.
 - **Services you run:** vulnerability or outage notices from these count as High.
 - **Custom rules:** in plain English, for example "Anything from my accountant is High in
   January."
@@ -45,5 +52,6 @@ everyone.
 
 ## Label colours
 
-New labels are created red, orange and blue. To change colours, edit step 3 of `SKILL.md`,
+New labels are created red, orange, blue and grey (Reviewed, shown in the label list only
+when it has unread mail). To change colours, edit step 3 of `SKILL.md`,
 or just recolour the labels in Gmail. The skill matches labels by name, not colour.

@@ -1,35 +1,42 @@
 # sort-inbox-priority
 
-A Claude skill that triages your Gmail inbox. It reads your mail, works out what actually
-needs you, and tags each of those threads with one of three labels:
+A Claude skill that triages your Gmail inbox to **zero unread**. It reads your mail, works
+out what actually needs you, and gives every thread one of four labels:
 
-| Label | Meaning |
-|---|---|
-| **Action/High Priority** | Act today. Ignoring it has a real cost. |
-| **Action/Medium Priority** | Deal with it this week. |
-| **Action/Low Priority** | Glance and file. |
-| *(no label)* | Doesn't need reading: newsletters, alerts, marketing. |
+| Label | Meaning | After the run |
+|---|---|---|
+| **Action/High Priority** | Act today. Ignoring it has a real cost. | Stays unread |
+| **Action/Medium Priority** | Deal with it this week. | Stays unread |
+| **Action/Low Priority** | Glance and file. | Marked read |
+| **Action/Reviewed** | Checked, doesn't need reading: newsletters, alerts, marketing. | Marked read |
 
-On its first run in a real inbox it took about 670 unread threads down to 29 worth opening.
+When it's done, your unread mail is your to-do list: only High and Medium threads. Nothing
+is left unread just because nobody looked at it.
 
-It **never** deletes, archives, marks as read or replies unless you ask it to.
+It **never** deletes or replies. It marks mail read or archives it only after you say yes,
+or if you've turned that on in your settings.
 
 ## Features
 
 - **Unread mode (default):** triages only unread inbox mail, so it suits a daily routine.
-- **Inbox zero mode:** say "all" or "inbox zero" to triage the whole inbox. Afterwards it
-  offers to archive everything left untagged (only with your yes).
-- **Creates the labels for you** if `Action/High Priority`, `Action/Medium Priority` or
-  `Action/Low Priority` are missing, colour-coded red, orange and blue.
-- **Safe to re-run:** threads that already have an Action label are skipped.
+- **Inbox zero mode:** say "all" or "inbox zero" to triage the whole inbox. It can also
+  archive the Reviewed and Low threads (only with your yes).
+- **Covers everything:** the main inbox, Promotions, Social and known noise senders.
+- **Clear step:** after tagging, it asks once ("Mark 612 threads as read?") and then
+  clears Reviewed and Low, so only High and Medium stay unread. A final check confirms it.
+- **Dry run:** say "dry run" to see what it would do without changing anything.
+- **Creates the labels for you** if any of the four are missing, colour-coded red, orange,
+  blue and grey.
+- **Safe to re-run or resume:** threads that already have an Action label are skipped, so a
+  run that stops early carries on where it left off.
 - **Customisable:** add VIP senders, noise senders and your own rules in a personal
   overrides file that lives outside the repo.
 
 ## Requirements
 
 - Claude (claude.ai, the desktop app or Claude Code).
-- A Gmail integration Claude can use to **search, read and label threads, and create
-  labels**. In Claude this is the Gmail connector. In Claude Code, use a Gmail MCP server
+- A Gmail integration Claude can use to **search, read, label and unlabel threads, and
+  create labels**. In Claude this is the Gmail connector. In Claude Code, use a Gmail MCP server
   that offers those operations.
 
 ## Install
@@ -55,10 +62,15 @@ Ask Claude in plain language:
 - "Sort my inbox"
 - "Triage my unread email"
 - "Run sort-inbox-priority on the full inbox, I want inbox zero"
+- "Dry run sort-inbox-priority"
 - `/sort-inbox-priority` (Claude Code)
 
-You get a short report: the counts per label, then your High and Medium items, each with
-one line on what to do.
+You get a short report that accounts for every thread, for example:
+
+> Inbox unread at start: 700. Labelled: High 0 / Medium 2 / Low 26. Reviewed: 640 (306
+> Promotions, 62 noise senders). Marked read: 666. Unread now: 2 (both Medium).
+
+Then your High and Medium items, each with one line on what to do.
 
 ## Run it every morning
 
@@ -77,12 +89,12 @@ The full default rules are in
 [skills/sort-inbox-priority/references/rules.md](skills/sort-inbox-priority/references/rules.md).
 In summary:
 
-- **High:** security alerts, service failures (storage full, payment failed), money with a
+- **High:** security alerts, service failures (payment failed, account suspended), money with a
   near deadline, real people asking you something, travel in the next 72 hours.
 - **Medium:** bills to check, school or club admin, deadlines further out, admin that
   needs you to act.
 - **Low:** receipts, paid statements, renewals with no change, FYIs.
-- **Untagged:** newsletters, alerts, marketing, delivery updates, review requests and
+- **Reviewed:** newsletters, alerts, marketing, delivery updates, review requests and
   reminders for things already past.
 
 ## Privacy
