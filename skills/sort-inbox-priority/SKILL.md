@@ -18,7 +18,8 @@ user gets one of three labels. Everything else stays untagged.
 ## Requirements
 
 A connected Gmail integration that can search, read and label threads and create labels
-(for example the Gmail connector in Claude). If none is connected, say so and stop.
+(for example the Gmail connector in Claude). If none is connected, or a call fails, follow
+"If something goes wrong" at the end of this file.
 
 ## 1. Load the rules
 
@@ -108,3 +109,23 @@ Keep it short:
 4. **Low:** a single line summarising the kinds of mail, unless the user asks for the list.
 5. Leave out sensitive detail (health, money amounts, account numbers). For example, write
    "medical admin from your GP", not what it says.
+
+## If something goes wrong
+
+Stop, tell the user plainly what happened and how to fix it, and never report a label as
+applied unless the `label_thread` call for it succeeded. In a scheduled or unattended run,
+put the message at the top of the summary so it isn't lost.
+
+- **No Gmail tools available:** "I can't reach your Gmail. Connect the Gmail connector
+  (in the Claude app: the connector settings; in Claude Code: add a Gmail MCP server), make
+  sure it can search, read and label mail and create labels, then ask me again."
+- **Searching or reading fails:** say the Gmail connection returned an error, quote the
+  error briefly, and suggest reconnecting the connector and trying again.
+- **Creating a label fails:** say which label couldn't be created and why. If a label with
+  the same name but different capitals exists, offer to use it. If the error is about
+  permission, say the connector needs permission to manage labels. Don't classify or label
+  anything until all three labels exist.
+- **Labelling fails:** stop at the first failure that isn't a one-off. Say how many threads
+  were labelled before it stopped and what the error was. Explain that running the skill
+  again is safe: threads already tagged are skipped, so it carries on where it stopped.
+- **Some threads couldn't be read:** label the rest, then list how many were skipped.
