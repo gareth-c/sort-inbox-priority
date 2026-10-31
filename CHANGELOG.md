@@ -9,6 +9,7 @@ Summary: Mail is now sorted into five priority labels, P1 to P5, the mail that n
 - Find-priorities step: likely action mail (priority subject words, VIP senders, the Primary tab, mail Gmail marks important, real people and conversations) is pulled out first and opened before it gets a level, using its date and content rather than the subject alone.
 - Bottom check: before reporting, the skill looks over everything it put in P4 and P5 and moves up anything that needs action.
 - Priority signal words in the default rules, and extra signal words in the overrides file.
+- Eval scenario: a 600-thread sample inbox with traps for missed check-ins, renewals, appointments, booking requests, a person with a plain subject, misfiled bills and a prompt injection, graded on the five counts, the trap levels and safety. It replaces the inbox-zero scenario.
 
 ### Changed
 - The report gives a count for each of the five labels, lists P1, P2 and P3, and summarises P4 and P5 in a line each.
