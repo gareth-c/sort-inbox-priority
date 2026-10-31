@@ -56,6 +56,31 @@ follow "If something goes wrong" at the end of this file.
 Before you start, note the inbox's unread thread count (`threadsUnread` on the `INBOX`
 label from `list_labels`) for the report.
 
+### Tell the user what's about to happen
+
+Once you know the mode, the settings and the unread count, send a short message before you
+change anything. Don't wait for a reply; carry on straight after it. Include:
+
+1. The name and the version from the **Version** line at the top of this file, for
+   example "Sort Inbox Priority 1.2.0".
+2. The mode and scope, for example "Unread mode: about 700 unread threads, including
+   Promotions, Social and noise senders." In full inbox mode, use the inbox's total
+   thread count.
+3. The plan in plain words, matched to the run:
+   - Create any missing labels (name them if you already know they're missing).
+   - Give every thread one label: High, Medium, Low or Reviewed.
+   - What happens to Reviewed and Low threads, from `clear_mode` and `mark_low_read`:
+     "then I'll ask before marking them read" (`ask`), "then I'll mark them read" (`read`),
+     "then I'll mark them read and archive them" (`archive`), or "and leave them as they
+     are" (`off`). In an unattended run with `ask`, say they'll be left for approval.
+   - High and Medium stay unread as your to-do list. Nothing is deleted.
+4. In a dry run, say up front that nothing will be changed.
+5. If an overrides file was found, say so in a few words ("Using your overrides: 4 VIPs,
+   12 noise senders"). Don't list personal details.
+
+Keep it to four or five lines. In an unattended run, put it at the top of the summary
+instead of sending it separately.
+
 ## 3. Make sure the labels exist
 
 1. Call `list_labels` and look for the four labels by display name (the defaults above,

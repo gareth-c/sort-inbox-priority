@@ -5,6 +5,7 @@
 Summary: The skill now says which version is running and what it's about to do before it starts.
 
 ### Added
+- Start message: before changing anything, the skill says its name and version, the mode, roughly how many threads it will look at, and what it will do with them, including whether it will ask before marking mail read.
 - Version number shown in the skill, with a check script that makes sure it matches the plugin manifests and runs during the zip build.
 
 ## 2026-10-31 (1.1.0)
