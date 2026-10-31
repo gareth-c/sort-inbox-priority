@@ -10,6 +10,7 @@ Summary: Runs now end at zero unread, apart from the High and Medium to-do list.
 - Settings for the Reviewed label name, how clearing works (ask, read, archive or off) and whether Low threads are cleared.
 - Final check that only High and Medium threads are left unread, with the reason given if not.
 - Dry-run mode that reports what would change without changing anything.
+- Eval scenario: a 600-thread sample inbox with Promotions, noise senders and trap emails, graded on full accounting, priorities and safety.
 - README, customising, scheduling and install guides describe the four labels, the clear step and the zero-unread goal.
 
 ### Changed
