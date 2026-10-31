@@ -34,30 +34,19 @@ It **never** deletes, archives, marks as read or replies unless you ask it to.
 
 ## Install
 
-### Claude Code (plugin)
+**Claude app (claude.ai or desktop):** open **Customize > Plugins**, select
+**Add marketplace**, enter `gareth-c/sort-inbox-priority`, then install
+**Sort Inbox Priority**.
+
+**Claude Code:**
 
 ```
 /plugin marketplace add gareth-c/sort-inbox-priority
 /plugin install sort-inbox-priority@sort-inbox-priority
 ```
 
-Then restart Claude Code, or reload plugins.
-
-### Claude app (custom skill)
-
-1. Clone this repo:
-   `git clone https://github.com/gareth-c/sort-inbox-priority.git`
-2. Build the zip. To include your personal overrides, pass your file (see
-   [docs/CUSTOMISING.md](docs/CUSTOMISING.md)):
-   `./scripts/build-zip.sh` or `./scripts/build-zip.sh ~/path/to/my-overrides.md`
-3. In Claude, open the skills settings and upload `dist/sort-inbox-priority.zip` as a
-   custom skill.
-4. Make sure the Gmail connector is connected.
-
-### Manual (any Claude Code project)
-
-Copy `skills/sort-inbox-priority` into `~/.claude/skills/` for all projects, or into
-`.claude/skills/` for one project.
+Updates, the custom skill zip (for personal overrides in the Claude app) and manual
+installs are covered in [docs/INSTALL.md](docs/INSTALL.md).
 
 ## Usage
 
@@ -105,7 +94,8 @@ sender lists never reach GitHub.
 ## Contributing
 
 Issues and pull requests are welcome, especially new noise senders that are widely
-useful and sharper rules. See [CONTRIBUTING.md](CONTRIBUTING.md).
+useful and sharper rules. See [CONTRIBUTING.md](CONTRIBUTING.md). Maintainers: see
+[docs/PUBLISHING.md](docs/PUBLISHING.md) for releases and the plugin directory.
 
 ## Licence
 

@@ -17,7 +17,9 @@ Edit `~/.claude/sort-inbox-priority/overrides.md`. It survives plugin upgrades.
 
 ### Claude app
 
-Build the zip (see the README), then add your file to it as `references/overrides.md`:
+The Claude app plugin uses the default rules. For your own overrides, use the custom
+skill zip instead ([INSTALL.md](INSTALL.md)). The build script adds your file to the zip as
+`references/overrides.md`:
 
 ```
 ./scripts/build-zip.sh ~/path/to/my-overrides.md
