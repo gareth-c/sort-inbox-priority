@@ -193,7 +193,7 @@ put the message at the top of the summary so it isn't lost.
 
 - **No Gmail tools available:** "I can't reach your Gmail. Connect the Gmail connector
   (in the Claude app: the connector settings; in Claude Code: add a Gmail MCP server), make
-  sure it can search, read and label mail and create labels, then ask me again."
+  sure it can search, read, label and unlabel mail and create labels, then ask me again."
 - **Searching or reading fails:** say the Gmail connection returned an error, quote the
   error briefly, and suggest reconnecting the connector and trying again.
 - **Creating a label fails:** say which label couldn't be created and why. If a label with
