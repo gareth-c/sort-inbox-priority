@@ -23,7 +23,7 @@ P1 and P2. The user works through each label in their own time.
 delete, reply or forward. The only changes this skill makes are creating its labels and
 adding one label to each thread.
 
-**Version:** 1.2.0
+**Version:** 2.0.0
 
 ## Requirements
 

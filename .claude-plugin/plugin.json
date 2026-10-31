@@ -1,8 +1,8 @@
 {
   "name": "sort-inbox-priority",
   "displayName": "Sort Inbox Priority",
-  "version": "1.2.0",
-  "description": "Triage your Gmail inbox into Action/High, Medium and Low Priority labels so you only read what matters. Unread by default, full inbox for inbox zero. Creates the labels if they are missing.",
+  "version": "2.0.0",
+  "description": "Sort your Gmail inbox into five priority labels, P1 (act today) to P5 (noise), reading the mail that needs action before deciding. Never changes read status. Creates the labels if they are missing.",
   "icon": "assets/icon.png",
   "author": {
     "name": "Gareth Campling",
@@ -17,7 +17,7 @@
     "inbox",
     "triage",
     "productivity",
-    "inbox-zero",
+    "priority",
     "labels"
   ]
 }
