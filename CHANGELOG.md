@@ -11,3 +11,4 @@ Summary: First release (1.0.0) of the Gmail triage skill and plugin.
 - Default triage rules and a short list of common noise senders.
 - Personal overrides file, kept outside the repo, for label names, VIP senders, noise senders and custom rules.
 - Searches walk back through date windows so large inboxes are fully covered, and already-tagged threads are skipped.
+- README, customising, scheduling and contributing guides.
